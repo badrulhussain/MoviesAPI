@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using MoviesAPI.Service;
 
 namespace MoviesAPI.Controllers
 {
@@ -17,10 +18,13 @@ namespace MoviesAPI.Controllers
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
+        private readonly IRepository _repository;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger,
+            IRepository repository)
         {
             _logger = logger;
+            _repository = repository;
         }
 
         [HttpGet]
