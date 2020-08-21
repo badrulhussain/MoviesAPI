@@ -18,23 +18,28 @@ namespace MoviesAPI.Controllers
             this.repositoy = repositoy;
         }
 
-        [HttpGet]
+        [HttpGet] // api/genres
+        [HttpGet("List")]
+        [HttpGet("/allgenres")] // /Allgenres
         public List<Genre> Get()
         {
             return repositoy.GetAllGenres();
         }
 
-        //[HttpGet]
-        //public Genre Get(int Id)
-        //{
-        //    var genre = repositoy.GetGenreById(Id);
-        //    if(genre == null)
-        //    {
-        //        //return NotFound();
-        //    }
+        //[HttpGet("example")] // api/genres/examlpe
+        //[HttpGet("{Id}")] // api/genres/1
+        //[HttpGet("{Id}/{param=badrul}")] // api/genres/1/otherName
+        [HttpGet("{Id:int}/{param=badrul}")] // api/genres/otherName
+        public Genre Get(int Id, string param)
+        {
+            var genre = repositoy.GetGenreById(Id);
+            if (genre == null)
+            {
+                //return NotFound();
+            }
 
-        //    return genre;
-        //}
+            return genre;
+        }
 
         [HttpPost]
         public void Post()

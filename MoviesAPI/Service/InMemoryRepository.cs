@@ -15,7 +15,7 @@ namespace MoviesAPI.Service
             _genres = new List<Genre>()
             {
                 new Genre() { Id = 1, Name = "Comedy"},
-                new Genre() { Id = 1, Name = "Action"}
+                new Genre() { Id = 2, Name = "Action"}
             };
         }
 
