@@ -21,7 +21,7 @@ namespace MoviesAPI.Controllers
         [HttpGet] // api/genres
         [HttpGet("List")]
         [HttpGet("/allgenres")] // /Allgenres
-        public List<Genre> Get()
+        public ActionResult<List<Genre>> Get()
         {
             return repositoy.GetAllGenres();
         }
@@ -30,33 +30,33 @@ namespace MoviesAPI.Controllers
         //[HttpGet("{Id}")] // api/genres/1
         //[HttpGet("{Id}/{param=badrul}")] // api/genres/1/otherName
         [HttpGet("{Id:int}/{param=badrul}")] // api/genres/otherName
-        public Genre Get(int Id, string param)
+        public ActionResult<Genre> Get(int Id, string param)
         {
             var genre = repositoy.GetGenreById(Id);
             if (genre == null)
             {
-                //return NotFound();
+                return NotFound();
             }
 
             return genre;
         }
 
         [HttpPost]
-        public void Post()
+        public ActionResult Post()
         {
-            
+            return NoContent();
         }
 
         [HttpPut]
-        public void Put()
+        public ActionResult Put()
         {
-            
+            return NoContent();
         }
 
         [HttpDelete]
-        public void Delete()
+        public ActionResult Delete()
         {
-            
+            return NoContent();
         }
     }
 }
