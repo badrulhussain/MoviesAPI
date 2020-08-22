@@ -11,6 +11,7 @@ namespace MoviesAPI.Controllers
 {
     //[Route("api/[Controller]")]
     [Route("api/genres")]
+    [ApiController]
     public class GenresController : ControllerBase
     {
         private readonly IRepository repositoy;
@@ -35,10 +36,6 @@ namespace MoviesAPI.Controllers
         //public ActionResult<Genre> Get(int Id, [FromHeader] string param2)
         public ActionResult<Genre> Get(int Id, [FromServices] string param2)
         {
-            if(!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
             var genre = repositoy.GetGenreById(Id);
             if (genre == null)
             {
